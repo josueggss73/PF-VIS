@@ -1,0 +1,37 @@
+INEC, instituto nacional de estadistica y censos
+Proyecciones Poblacion Costa Rica por Provincia
+
+Provincia    ;2016    ;2017    ;2018
+
+
+San José     ;1607170 ;1621393 ;1635144
+Alajuela     ;975023  ;989088  ;1002917
+Cartago      ;525724  ;529817  ;533795
+Heredia      ;497805  ;505052  ;512172
+Guanacaste   ;371375  ;377136  ;382821
+Puntarenas   ;474262  ;480548  ;486763
+Limon        ;439013  ;444447  ;449781
+-----------------------------------------------------------------------
+Condicion de aseguramiento y sexo. Censo 2000
+
+Provincia   Total                         Asegurada                    No Asegurada
+            Ambos      Hombres  Mujeres   Ambos     Hombres  Mujeres   Ambos    Hombres  Mujeres
+SAN JOSE	1345750    656205	689545	  1108026	526447	 581579    237724   129758  107966
+ALAJUELA	716286	   361562	354724	  570945	279656	 291289    145341   81906	63435
+CARTAGO	    432395	   216357	216038	  355118	173362	 181756    77277    42995	34282
+HEREDIA	    354732	   176307	178425	  305821	148370	 157451    48911	27937	20974
+GUANACASTE	264238	   133327	130911	  208763	100360	 108403    55475	32967	22508
+PUNTARENAS	357483	   183458	174025	  292231	144291	 147940    65252	39167	26085
+LIMON	    339295	   175398	163897	  274510	138625	 135885	   64785	36773	28012
+-----------------------------------------------------------------------
+Condicion de aseguramiento y sexo. Censo 2011
+
+Provincia   Total                         Asegurada                    No Asegurada
+            Ambos      Hombres  Mujeres   Ambos     Hombres  Mujeres   Ambos    Hombres  Mujeres
+SAN JOSE    1404242    671469   732773    1218284   571355   646929    185958   100114   85844
+ALAJUELA    848146     420888   427258    707041    343885   363156    141105   77003    64102
+CARTAGO     490903     240873   250030    423506    203361   220145    67397    37512    29885
+HEREDIA     433677     211246   222431    383515    184311   199204    50162    26935    23227
+GUANACASTE  326953     161988   164965    266458    127757   138701    60495    34231    26264
+PUNTARENAS  410929     205959   204970    347959    168702   179257    62970    37257    25713
+LIMON       386862     193640   193222    331149    163571   167578    55713    30069    25644

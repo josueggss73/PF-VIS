@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Map App</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+</head>
+<body>
+    <ul>
+        <li><a class="active">INEC, Censos. Seguro social por Provincia y Sexo</a></li>
+        <!--li><button class="active" onclick="changeYear(2000)">2000</button></li-->
+        <!--li><button class="active" onclick="changeYear(2011)">2011</button></li-->
+        <li><button id="buttonUpdate" class="active" onclick="makeGets()">Actualizar</button></li>
+      </ul>
+    <div id="str">
+       <div id='main' class="containerMap"><!-- Plotly chart will be drawn inside this DIV --></div>
+       <div id="RightItems" class="containerRight">
+            <div id="titles">
+                <div id="provinceTitle" class="title">
+                    <h1 id="province">Provincia: </h1>
+                    <h1 id="provinceName">San José</h1>
+                </div>
+                <div id="yearTitle" class="title">
+                    <h1 id="year">Año: </h1>
+                    <select id="yearSelection">
+                        <option value="2000">2000</option>
+                        <option value="2011">2011</option>
+                    </select>
+                </div>
+                <div id="sexTitle" class="title">
+                    <h1 id="sex">Sexo: </h1>
+                    <select id="sexSelection">
+                        <option value="Hombres">Hombres</option>
+                        <option value="Mujeres">Mujeres</option>
+                    </select>
+                </div>
+            </div>
+            <div id= "graphs">
+                <div id="first2">
+                    <div id="graph1" class="graph"></div>
+                </div>
+                <div id="second2">
+                    <div id="graph3" class="graph"></div>
+                    <div id="graph4" class="graph"></div>
+                </div>
+            </div>    
+        </div>
+    </div>
+    <script src='main.js'></script>
+    <!--script src='connection.js'></script-->
+</body>
+</html>

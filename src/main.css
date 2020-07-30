@@ -1,0 +1,153 @@
+body{
+    margin: 0px 0px 0px 0px;
+}
+h1{
+   margin: 0px;
+}
+.containerMap {
+    width: 600px;
+    height: 550px;
+    float:left;
+}
+.containerRight {
+    width: 730px;
+    height: 550px;
+    float:left;
+    margin-top: 10px;
+}
+#rightItems{
+    float:left
+}
+#titles{
+    width: 730px;
+    height: 40px;
+    box-sizing: border-box;
+}
+.title{
+    border-color:blue;
+    color:#FFF;
+    border-width: 2px;
+    border-style: solid;
+    background-color:rgba(63, 63, 240, 0.993);
+    box-sizing: border-box;
+    float: left;
+}
+#provinceTitle{
+   width: 300px;
+}
+#yearTitle{
+   width: 170px;
+   margin-left: 5px;
+}
+#sexTitle{
+    width: 240px;
+    margin-left: 5px;
+}
+#titles h1{
+    font-size: 26px;
+    font-family: sans-serif;
+    font-weight: 700;
+    margin-left: 10px;
+    box-sizing: border-box;
+}
+#titles select{
+    font-size: 24px;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin-left: 10px;
+    box-sizing: border-box;
+}
+#province{
+    float: left;
+}
+#provinceName{
+    float: left;
+}
+#yearNumber{
+    float: left;
+}
+#year{
+    float: left;
+}
+#sex{
+    float: left;
+}
+#sexType{
+    float: left;
+}
+#graph1{
+    margin-left: 125px;
+    width: 550px;
+}
+#graph3{
+    margin-top: 5px;
+    margin-right: 5px;
+}
+#graph4{
+    margin-top: 5px;
+}
+.graph{
+    width: 340px;
+    height: 240px;
+    margin-top: 5px;
+    margin-left: 5px;
+    float: left;
+    border-width: 2px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    height: 50px;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li button{
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin-left: 30px;
+    height: 50px;
+    border-color: blue;
+  }
+  li a{
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin-right: 800px;
+    height: 50px;
+    border-color: blue;
+  }
+  
+  #buttonUpdate:hover {
+    color:greenyellow;
+  }
+  #buttonUpdate{
+      position: absolute;
+      right: 0;
+      background-color: green;
+      border-color: green;
+  }
+  
+  .active {
+    background-color:rgba(63, 63, 240, 0.993);
+    color: #FFF;
+    margin: 5px;
+    padding: 5px 10px 5px 10px;
+    font-size: 25px;
+    border-width: 2px;
+    border-style: solid;
+    box-sizing: border-box;
+    font-weight: 700;
+    font-family: sans-serif;
+    height: 40px;
+  }
