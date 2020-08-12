@@ -11,21 +11,21 @@ var server = app.listen(8080, function () {
     console.log('Server is running..');
 });
 
-// config for your database
-var config = {
-    user: 'josue',
-    password: '#########',
-    //server: 'MSSQLSERVER01', 
-    server: 'localhost', 
-    database: 'PC3-VIS' 
-};
-var sql = require("mssql");
-// connect to your database
-sql.connect(config, function (err) {
+//// config for your database
+//var config = {
+//    user: 'josue',
+//    password: '#########',
+//    //server: 'MSSQLSERVER01', 
+//    server: 'localhost', 
+//    database: 'PC3-VIS' 
+//};
+//var sql = require("mssql");
+//// connect to your database
+//sql.connect(config, function (err) {
 
-    if (err) console.log(err);
+//    if (err) console.log(err);
 
-});
+//});
 
 app.get('/main.css', function(req, res) {
     res.sendFile(__dirname + "/" + "main.css");
@@ -33,8 +33,8 @@ app.get('/main.css', function(req, res) {
 app.get('/main.js', function(req, res) {
     res.sendFile(__dirname + "/" + "main.js");
 });
-app.get('/provinces.json', function(req, res) {
-    res.sendFile(__dirname + "/" + "provinces.json");
+app.get('/cantones.json', function(req, res) {
+    res.sendFile(__dirname + "/" + "cantones.json");
 });
 app.get('/favicon.ico', function(req, res) {
     res.sendFile(__dirname + "/" + "favicon.ico");
