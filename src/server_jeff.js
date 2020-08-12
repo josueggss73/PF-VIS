@@ -11,17 +11,19 @@ var server = app.listen(8080, function () {
     console.log('Server is running..');
 });
 
-//// config for your database
-//var config = {
-//    user: 'josue',
-//    password: '#########',
-//    //server: 'MSSQLSERVER01', 
-//    server: 'localhost', 
-//    database: 'PC3-VIS' 
-//};
-//var sql = require("mssql");
-//// connect to your database
-//sql.connect(config, function (err) {
+
+// config for your database
+var config = {
+    user: 'josue',
+    password: 'warriorTX73',
+    //server: 'MSSQLSERVER01', 
+    server: 'localhost', 
+    database: 'PC3-VIS' 
+};
+var sql = require("mssql");
+// connect to your database
+sql.connect(config, function (err) {
+
 
 //    if (err) console.log(err);
 
