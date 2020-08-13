@@ -22,8 +22,8 @@ var labelsDonut = [];
 
 
 //-----Listeners
-document.getElementById("yearSelection").addEventListener("change",selectYear);
-document.getElementById("sexSelection").addEventListener("change",selectSex);
+//document.getElementById("yearSelection").addEventListener("change",selectYear);
+//document.getElementById("sexSelection").addEventListener("change",selectSex);
 
 function changeProvinceName(province,province2){
   document.getElementById("provinceName").innerHTML = province
@@ -159,7 +159,7 @@ function parseDonutData(){
   createDonutView();
 }
 //-----------GRAPHICS-------------------
-
+cantonNumbers = [1,  2,  3,  4,  5,  6,  7,  8,  9,  10,  11,  12,  13,  14,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,  28,  29,  30,  31,  32,  33,  34,  35,  36,  37,  38,  39,  40,  41,  42,  43,  44,  45,  46,  47,  48,  49,  50,  51,  52,  53,  54,  55,  56,  57,  58,  59,  60,  61,  62,  63,  64,  65,  66,  67,  68,  69,  70,  71,  72,  73,  74,  75,  76,  77,  78,  79,  80,  81]
 var data = [{
     type: "choroplethmapbox",
     name: "Provincias de Costa Rica",
@@ -169,9 +169,15 @@ var data = [{
     z: [0, 500, 200, 800, 100, 1500, 600, 700, 2000, 400, 1650, 125, 1000, 1700, 300, 900, 1200, 1900, 450, 1100, 10000, 8000, 9000, 9500, 8700, 8200, 9100, 8600, 9400, 7800, 8900, 9700, 9200, 8700, 8300, 5000, 7000, 5800, 6300, 5100, 6700, 5400, 6000, 4000, 4800, 3500, 4100, 3000, 3700, 3900, 4400, 3200, 5000, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 5000, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750, 1345750],
     zmin: 0, zmax: 10000,
     colorscale: "Rainbow",
+    hoverinfo: "cantonNumbers",
     //autocolorscale:true,
     }];
-var layout = {mapbox: {style: "dark", center: {lon: -84.09, lat: 9.93}, zoom: 6.5}, width: 600, height: 550, margin: {l: 0,t: 0, b: 0}};
+var layout = {mapbox: {style: "dark", center: {lon: -84.09, lat: 9.93}, zoom: 6.5}, 
+                    width: 1000, 
+                    height: 450, 
+                    margin: {l: 0,t: 0, b: 0},
+                    hovermode: 'closest'
+                  };
 //margin = dict(l = 0, r = 0, t = 0, b = 0)
 var config = {mapboxAccessToken: "pk.eyJ1Ijoiam9zdWVnZ3NzNzMiLCJhIjoiY2tkMTA5MHNmMGRiMjJ0bW11NGdqNjljMCJ9.aQToRizI-RvaLRg7SopqrQ"};
 Plotly.newPlot('main', data, layout, config).then(gd=>{
