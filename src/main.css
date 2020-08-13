@@ -5,21 +5,28 @@ h1{
    margin: 0px;
 }
 .containerMap {
-    width: 600px;
-    height: 550px;
-    float:left;
+    width: 80%;
+    margin-left: 16%;
+    margin-right: 4%;
 }
-.containerRight {
-    width: 730px;
-    height: 550px;
-    float:left;
-    margin-top: 10px;
+#GraphsContainer{
+    
 }
-#rightItems{
-    float:left
+.mainTitle {
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+}
+#mainTitle1{
+   font-size: 30px;
+}
+#mainTitle2{
+    font-size: 42px;
+}
+#mainTitle3{
+    font-size: 25px;
+    margin-bottom: 10px;
 }
 #titles{
-    width: 730px;
     height: 40px;
     box-sizing: border-box;
 }
@@ -31,50 +38,76 @@ h1{
     background-color:rgba(63, 63, 240, 0.993);
     box-sizing: border-box;
     float: left;
+    margin-bottom: 15px;
 }
-#provinceTitle{
-   width: 300px;
+#cantonTitle{
+   margin-top: 10px;
+   margin-bottom: 15px;
+   width: 36%;
+   margin-left: 32%;
+   margin-right: 32%;
+}
+#canton{
+    float: left;
+    margin-left: 10px;
+}
+#cantonName{
+    float: left;
+    margin-left: 8px;
 }
 #yearTitle{
-   width: 170px;
-   margin-left: 5px;
+   width: 12%;
+   margin-left: 1%;
+}
+#year{
+    float: left;
 }
 #sexTitle{
-    width: 240px;
-    margin-left: 5px;
+    width: 15%;
+    margin-left: 1%;
+}
+#sex{
+    float: left;
+}
+#ageTitle{
+    width: 19%;
+    margin-left: 1%;
+}
+#age{
+    float: left;
+}
+#tumorTitle{
+    width: 36%;
+    margin-left: 1%;
+}
+#tumor{
+    float: left;
 }
 #titles h1{
-    font-size: 26px;
+    font-size: 20px;
     font-family: sans-serif;
     font-weight: 700;
     margin-left: 10px;
     box-sizing: border-box;
 }
 #titles select{
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: 600;
+    margin-left: 10px;
+    box-sizing: border-box;
+}
+#tumorSelection{
+    
+}
+#titles button{
     font-size: 24px;
     font-family: sans-serif;
     font-weight: 600;
     margin-left: 10px;
     box-sizing: border-box;
 }
-#province{
-    float: left;
-}
-#provinceName{
-    float: left;
-}
-#yearNumber{
-    float: left;
-}
-#year{
-    float: left;
-}
-#sex{
-    float: left;
-}
-#sexType{
-    float: left;
-}
+
 #graph1{
     margin-left: 125px;
     width: 550px;
@@ -94,60 +127,14 @@ h1{
     float: left;
     border-width: 2px;
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    height: 50px;
-  }
-  
-  li {
-    float: left;
-  }
-  
-  li button{
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    margin-left: 30px;
-    height: 50px;
-    border-color: blue;
-  }
-  li a{
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    margin-right: 800px;
-    height: 50px;
-    border-color: blue;
-  }
   
   #buttonUpdate:hover {
     color:greenyellow;
   }
   #buttonUpdate{
-      position: absolute;
-      right: 0;
+      margin-left: 4%;
+      color: #FFF;
       background-color: green;
       border-color: green;
   }
   
-  .active {
-    background-color:rgba(63, 63, 240, 0.993);
-    color: #FFF;
-    margin: 5px;
-    padding: 5px 10px 5px 10px;
-    font-size: 25px;
-    border-width: 2px;
-    border-style: solid;
-    box-sizing: border-box;
-    font-weight: 700;
-    font-family: sans-serif;
-    height: 40px;
-  }
