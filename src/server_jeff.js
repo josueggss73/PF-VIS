@@ -34,8 +34,8 @@ app.get('/main.css', function(req, res) {
 app.get('/main.js', function(req, res) {
     res.sendFile(__dirname + "/" + "main.js");
 });
-app.get('/test.json', function (req, res) {
-    res.sendFile(__dirname + "/" + "test.json");
+app.get('/cantones.json', function (req, res) {
+    res.sendFile(__dirname + "/" + "cantones.json");
 });
 app.get('/favicon.ico', function(req, res) {
     res.sendFile(__dirname + "/" + "favicon.ico");

@@ -1,6 +1,6 @@
 select * from Provincias
 
-SELECT * FROM Cantones
+SELECT * FROM Cantones where idProvincia = 1
 
 SELECT * FROM Sexos
 
@@ -15,3 +15,4 @@ select * from Tumores_X_GruposEdad
 select * from Tumores_X_Cantones
 
 --insert GruposEdad values ('Desconocido')
+delete from Tumores where idTumor >= 70

@@ -1,6 +1,9 @@
 //----Global vars----
 var selectedSex = "Hombres";
-var selectedProvince = "Guanacaste";
+var selectedProvince = "ALAJUELA";
+var selectedProvinceId = 2;
+var selectedCanton = "SAN CARLOS";
+var selectedCantonId = 30;
 var selectedYear = 2000;
 //----Responses for every view
 var responseBars = "0";
@@ -25,9 +28,13 @@ var labelsDonut = [];
 //document.getElementById("yearSelection").addEventListener("change",selectYear);
 //document.getElementById("sexSelection").addEventListener("change",selectSex);
 
-function changeProvinceName(province,province2){
+function changeProvinceName(province,provinceId, canton, cantonId){
+  document.getElementById("cantonName").innerHTML = canton
   document.getElementById("provinceName").innerHTML = province
-  selectedProvince = province2;
+  selectedProvince = province;
+  selectedProvinceId = provinceId;
+  selectedCanton = canton;
+  selectedCantonId = cantonId;
   makePosts();
 }
 function selectYear(){
@@ -163,7 +170,7 @@ cantonNumbers = [1,  2,  3,  4,  5,  6,  7,  8,  9,  10,  11,  12,  13,  14,  15
 var data = [{
     type: "choroplethmapbox",
     name: "Provincias de Costa Rica",
-    geojson: "http://localhost:8080/test.json",
+    geojson: "http://localhost:8080/cantones.json",
     locations: ["SAN JOSE", "ESCAZU", "DESAMPARADOS", "PURISCAL", "TARRAZU", "ASERRI", "MORA", "GOICOECHEA", "SANTA ANA", "ALAJUELITA", "VAZQUEZ DE CORONADO", "ACOSTA", "TIBAS", "MORAVIA", "MONTES DE OCA", "TURRUBARES", "DOTA", "CURRIDABAT", "PEREZ ZELEDON", "LEON CORTES",
 
       "ALAJUELA", "SAN RAMON", "GRECIA", "RIO CUARTO", "SAN MATEO", "ATENAS", "NARANJO", "PALMARES", "POAS", "OROTINA", "SAN CARLOS", "ZARCERO", "VALVERDE VEGA", "UPALA", "LOS CHILES", "GUATUSO",
@@ -209,7 +216,7 @@ Plotly.newPlot('main', data, layout, config).then(gd=>{
   gd.on('plotly_click', d => {
       var pt = (d.points || [])[0]
       switch(pt.location) {
-        case 'SJ':
+        case 'SAN CARLOS':
           changeProvinceName("San José","San Jose");
           break
         case 'AL':

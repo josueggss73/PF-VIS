@@ -43,13 +43,21 @@ h1{
 #cantonTitle{
    margin-top: 10px;
    margin-bottom: 15px;
-   width: 36%;
-   margin-left: 32%;
-   margin-right: 32%;
+   width: 66%;
+   margin-left: 17%;
+   margin-right: 17%;
+}
+#province{
+    float: left;
+    margin-left: 10px;
+}
+#provinceName{
+    float: left;
+    margin-left: 8px;
 }
 #canton{
     float: left;
-    margin-left: 10px;
+    margin-left: 30px;
 }
 #cantonName{
     float: left;
