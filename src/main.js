@@ -173,7 +173,7 @@ var data = [{
     geojson: "http://localhost:8080/cantones.json",
     locations: ["SAN JOSE", "ESCAZU", "DESAMPARADOS", "PURISCAL", "TARRAZU", "ASERRI", "MORA", "GOICOECHEA", "SANTA ANA", "ALAJUELITA", "VAZQUEZ DE CORONADO", "ACOSTA", "TIBAS", "MORAVIA", "MONTES DE OCA", "TURRUBARES", "DOTA", "CURRIDABAT", "PEREZ ZELEDON", "LEON CORTES",
 
-      "ALAJUELA", "SAN RAMON", "GRECIA", "RIO CUARTO", "SAN MATEO", "ATENAS", "NARANJO", "PALMARES", "POAS", "OROTINA", "SAN CARLOS", "ZARCERO", "VALVERDE VEGA", "UPALA", "LOS CHILES", "GUATUSO",
+      "ALAJUELA", "SAN RAMON", "GRECIA", "RIO CUARTO", "SAN MATEO", "ATENAS", "NARANJO", "PALMARES", "POAS", "OROTINA", "SAN CARLOS", "ALFARO RUIZ", "VALVERDE VEGA", "UPALA", "LOS CHILES", "GUATUSO",
 
       "CARTAGO", "PARAISO", "LA UNION", "JIMENEZ", "TURRIALBA", "ALVARADO", "OREAMUNO", "EL GUARCO",
 
@@ -181,13 +181,13 @@ var data = [{
 
       "LIBERIA", "NICOYA", "SANTA CRUZ", "BAGACES", "CARRILLO", "CAÑAS", "ABANGARES", "TILARAN", "NANDAYURE", "LA CRUZ", "HOJANCHA",
 
-      "PUNTARENAS", "PUNTARENAs", "ISLA DEL COCO", "ISLA NUEZ", "ISLA CABO BLANCO", "ISLA CABUYA", "ISLA TORTUGA", "ISLA ALCATRAZ", "ISLAS NEGRITOS", "ISLA NEGRITOS", "ISLA JESUITA", "ISLA CEDROS", "ISLA MUERTOS", "ISLA SAN LUCAS", "ISLA VENADO", "ISLA CABALLO", "ISLA BEJUCO", "ISLA CHIRA", "ESPARZA", "BUENOS AIRES", "MONTES DE ORO", "OSA", "ISLA DEL CAÑO", "AGUIRRE", "GOLFITO", "PARQUE NACIONAL CORCOVADO", "COTO BRUS", "PARRITA", "CORREDORES", "GARABITO",
+      "PUNTARENAS", "PUNTARENAs", "ISLA DEL COCO", "ISLA NUEZ", "ISLA CABO BLANCO", "ISLA CABUYA", "ISLA TORTUGA", "ISLA ALCATRAZ", "ISLAS NEGRITOS", "ISLA NEGRITOS", "ISLA JESUITA", "ISLA CEDROS", "ISLA MUERTOS", "ISLA SAN LUCAS", "ISLA VENADO", "ISLA CABALLO", "ISLA BEJUCO", "ISLA CHIRA", "ESPARZA", "BUENOS AIRES", "MONTES DE ORO", "OSA", "AGUIRRE", "GOLFITO", "COTO BRUS", "PARRITA", "CORREDORES", "GARABITO",
 
       "LIMON", "POCOCI", "SIQUIRRES", "TALAMANCA", "MATINA", "GUACIMO"],
     // 1345750
     z: [0, 1000, 200, 800, 100, 1500, 600, 700, 2000, 400, 1000, 125, 1000, 2000, 300, 900, 1200, 1900, 3000, 1100,
 
-        10000, 8500, 9000, 7500, 10000, 8700, 8200, 9100, 8600, 8000, 9300, 8900, 9750, 9200, 8700, 8300,
+        10000, 8000, 9000, 7500, 10000, 8700, 8200, 9100, 8600, 8000, 7800, 8900, 9700, 9200, 8700, 8300,
 
         5000, 7000, 5800, 6300, 5100, 6700, 5400, 6000,
 
@@ -195,7 +195,7 @@ var data = [{
 
         5500, 5000, 6200, 6850, 4500, 5800, 4750, 6400, 5900, 7200, 6550,
 
-        7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 6800, 7500, 7200, 7800, 7800, 7400, 7100, 7100, 8100, 8200, 7350, 7500,
+        7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 6400, 7250, 6000, 7900, 5000, 6100, 5000, 4468, 5500, 7500,
 
         1500, 2700, 1650, 500, 800, 400],
 
@@ -216,26 +216,113 @@ Plotly.newPlot('main', data, layout, config).then(gd=>{
   gd.on('plotly_click', d => {
       var pt = (d.points || [])[0]
       switch(pt.location) {
-        case 'SAN CARLOS':
-          changeProvinceName("San José","San Jose");
+        case 'SAN JOSE':
+          changeProvinceName("SAN JOSE",1,pt.location,1);
           break
-        case 'AL':
-          changeProvinceName("Alajuela","Alajuela");
+        case 'ESCAZU':
+          changeProvinceName("SAN JOSE",1,pt.location,2);
           break
-        case 'CA':
-          changeProvinceName("Cartago","Cartago");
+        case 'DESAMPARADOS':
+          changeProvinceName("SAN JOSE",1,pt.location,3);
           break
-        case 'HE':
-          changeProvinceName("Heredia","Heredia");
+        case  "PURISCAL":
+          changeProvinceName("SAN JOSE",1,pt.location,4);
           break
-        case 'GU':
-          changeProvinceName("Guanacaste","Guanacaste");
+        case  "TARRAZU":
+          changeProvinceName("SAN JOSE",1,pt.location,5);
           break
-        case 'PU':
-          changeProvinceName("Puntarenas","Puntarenas");
+        case  "ASERRI":
+          changeProvinceName("SAN JOSE",1,pt.location,6);
           break
-        case 'LI':
-          changeProvinceName("Limón","Limon");
+        case  "MORA":
+          changeProvinceName("SAN JOSE",1,pt.location,7);
+          break
+        case  "GOICOECHEA":
+          changeProvinceName("SAN JOSE",1,pt.location,8);
+          break
+        case  "SANTA ANA":
+          changeProvinceName("SAN JOSE",1,pt.location,9);
+          break
+        case  "ALAJUELITA": 
+          changeProvinceName("SAN JOSE",1,pt.location,10);
+          break
+        case  "VAZQUEZ DE CORONADO":
+          changeProvinceName("SAN JOSE",1,pt.location,11);
+          break
+        case  "ACOSTA":
+          changeProvinceName("SAN JOSE",1,pt.location,12);
+          break
+        case  "TIBAS":
+          changeProvinceName("SAN JOSE",1,pt.location,13);
+          break
+        case  "MORAVIA":
+          changeProvinceName("SAN JOSE",1,pt.location,14);
+          break
+        case  "MONTES DE OCA":
+          changeProvinceName("SAN JOSE",1,pt.location,15);
+          break
+        case  "TURRUBARES":
+          changeProvinceName("SAN JOSE",1,pt.location,16);
+          break
+        case  "DOTA":
+          changeProvinceName("SAN JOSE",1,pt.location,17);
+          break
+        case  "CURRIDABAT":
+          changeProvinceName("SAN JOSE",1,pt.location,18);
+          break
+        case  "PEREZ ZELEDON":
+          changeProvinceName("SAN JOSE",1,pt.location,19);
+          break
+        case  "LEON CORTES":
+          changeProvinceName("SAN JOSE",1,pt.location,20);
+          break
+        case "ALAJUELA":
+          changeProvinceName("ALAJUELA",2,pt.location,21);
+          break
+        case "SAN RAMON": 
+          changeProvinceName("ALAJUELA",2,pt.location,22);
+          break
+        case "GRECIA":
+          changeProvinceName("ALAJUELA",2,pt.location,23);
+          break
+        case "RIO CUARTO":
+          changeProvinceName("ALAJUELA",2,pt.location,82);
+          break
+        case "SAN MATEO":
+          changeProvinceName("ALAJUELA",2,pt.location,24);
+          break
+        case "ATENAS":
+          changeProvinceName("ALAJUELA",2,pt.location,25);
+          break
+        case "NARANJO": 
+          changeProvinceName("ALAJUELA",2,pt.location,26);
+          break
+        case "PALMARES": 
+          changeProvinceName("ALAJUELA",2,pt.location,27);
+          break
+        case "POAS":
+          changeProvinceName("ALAJUELA",2,pt.location,28);
+          break
+        case "OROTINA":
+          changeProvinceName("ALAJUELA",2,pt.location,29);
+          break
+        case "SAN CARLOS":
+          changeProvinceName("ALAJUELA",2,pt.location,30);
+          break
+        case "ALFARO RUIZ": 
+          changeProvinceName("ALAJUELA",2,pt.location,31);
+          break
+        case "VALVERDE VEGA":
+          changeProvinceName("ALAJUELA",2,pt.location,32);
+          break
+        case "UPALA":
+          changeProvinceName("ALAJUELA",2,pt.location,33);
+          break
+        case "LOS CHILES":
+          changeProvinceName("ALAJUELA",2,pt.location,34);
+          break
+        case "GUATUSO":
+          changeProvinceName("ALAJUELA",2,pt.location,35);
           break
       }
     })
