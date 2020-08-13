@@ -1,6 +1,9 @@
 //----Global vars----
 var selectedSex = "Hombres";
-var selectedProvince = "Guanacaste";
+var selectedProvince = "ALAJUELA";
+var selectedProvinceId = 2;
+var selectedCanton = "SAN CARLOS";
+var selectedCantonId = 30;
 var selectedYear = 2000;
 //----Responses for every view
 var responseBars = "0";
@@ -25,9 +28,13 @@ var labelsDonut = [];
 //document.getElementById("yearSelection").addEventListener("change",selectYear);
 //document.getElementById("sexSelection").addEventListener("change",selectSex);
 
-function changeProvinceName(province,province2){
+function changeProvinceName(province,provinceId, canton, cantonId){
+  document.getElementById("cantonName").innerHTML = canton
   document.getElementById("provinceName").innerHTML = province
-  selectedProvince = province2;
+  selectedProvince = province;
+  selectedProvinceId = provinceId;
+  selectedCanton = canton;
+  selectedCantonId = cantonId;
   makePosts();
 }
 function selectYear(){
@@ -209,7 +216,7 @@ Plotly.newPlot('main', data, layout, config).then(gd=>{
   gd.on('plotly_click', d => {
       var pt = (d.points || [])[0]
       switch(pt.location) {
-        case 'SJ':
+        case 'SAN CARLOS':
           changeProvinceName("San José","San Jose");
           break
         case 'AL':
