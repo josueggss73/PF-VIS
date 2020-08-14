@@ -1,30 +1,28 @@
 //----Global vars----
-var selectedSex = "Hombres";
-var selectedProvince = "ALAJUELA";
-var selectedProvinceId = 2;
-var selectedCanton = "SAN CARLOS";
-var selectedCantonId = 30;
-var selectedYear = 2000;
+var selectedSex = 1;
+var selectedProvince = "SAN JOSE";
+var selectedProvinceId = 1;
+var selectedCanton = "SAN JOSE";
+var selectedCantonId = 1;
+var selectedYear = 2009;
 var selectedAge = 1;
 var selectedTumor = 1;
 //----Responses for every view
-var responseBars = "0";
-var responsePie = "0";
-var responseDonut = "0";
+var responseLines = "0";
+
+var responseBars = "0"
 
 //----Data for every view
-var valuesBars1 = [];
-var labelsBars1 = [];
-var valuesBars2 = [];
-var labelsBars2 = [];
 
-var valuesPie1 = [];
-var valuesPie2 = [];
+var valuesLines1 = [];
+var valuesLines2 = [];
+
+var valuesBars = [];
+var namesBars = [];
+
+var dataPie1 = [];
+var dataPie2 = [];
 var labelsPie = [];
-
-var valuesDonut = [];
-var labelsDonut = [];
-
 
 //-----Listeners
 document.getElementById("yearSelection").addEventListener("change",selectYear);
@@ -61,12 +59,14 @@ function selectTumor(){
 function makeGets(){
   httpGetBars();
   httpGetPie();
-  httpGetDonut();
+  //httpGetDonut();
+  httpGetLines();
 }
 function makePosts(){
   httpPostBars();
   httpPostPie();
-  httpPostDonut();
+  //httpPostDonut();
+  httpPostLines();
 }
 
 //-----------HTTP-----------------------
@@ -87,7 +87,7 @@ function httpPostBars()
   var request = new XMLHttpRequest();
   request.open("POST", path, true); // true = asynchronous
   request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-  var text= '{"year":"'+selectedYear+'","province":"'+selectedProvince+'"}';
+  var text= '{"year":"'+selectedYear+'","canton":"'+selectedCantonId+'","sex":"'+selectedSex+'"}';
   request.send ( text );
   request = null;
 }
@@ -98,7 +98,6 @@ function httpGetPie()
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.open( "GET", path, false ); // false for synchronous request
   xmlHttp.send( null );
-  //console.log("Client: "+xmlHttp.responseText);
   responsePie = xmlHttp.responseText;
   parsePieData();
 }
@@ -109,7 +108,7 @@ function httpPostPie()
   var request = new XMLHttpRequest();
   request.open("POST", path, true); // true = asynchronous
   request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
-  var text= '{"year":"'+selectedYear+'","sex":"'+selectedSex+'"}';
+  var text= '{"year":"'+selectedYear+'","tumor":"'+selectedTumor+'"}';
   request.send ( text );
   request = null;
 }
@@ -134,21 +133,37 @@ function httpPostDonut()
   request.send ( text );
   request = null;
 }
+//----------------------------------------------------------------------------------------------
+//---- LINES   LINES   LINES   LINES   LINES   LINES   LINES   LINES   LINES
+//----------------------------------------------------------------------------------------------
+function httpGetLines()
+{
+  var path = "http://localhost:8080/lines";
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", path, false ); // false for synchronous request
+  xmlHttp.send( null );
+  responseLines = xmlHttp.responseText;
+  parseLinesData();
+}
+
+function httpPostLines()
+{
+  var path = "http://localhost:8080/lines"
+  var request = new XMLHttpRequest();
+  request.open("POST", path, true); // true = asynchronous
+  request.setRequestHeader("Content-Type", "application/json; charset=UTF-8");
+  var text= '{"tumor":"'+selectedTumor+'"}';
+  request.send ( text );
+  request = null;
+}
 //--------Parse Functions-----------
 function parseBarsData(){
   var obj = JSON.parse(responseBars);
-  valuesBars1 = [];
-  labelsBars1 = [];
-  valuesBars2 = [];
-  labelsBars2 = [];
+  valuesBars = [];
+  namesBars = [];
   for (i in obj) {
-    if((obj[i].Condicion).localeCompare("Asegurados") == 0){
-      valuesBars1.push(obj[i].Porcentaje);
-      labelsBars1.push(obj[i].Sexo);
-    }else{
-      valuesBars2.push(obj[i].Porcentaje);
-      labelsBars2.push(obj[i].Sexo);
-    }
+    valuesBars.push(obj[i].cantidad)
+    namesBars.push('('+obj[i].cantidad+') '+obj[i].nombreTumor)
   }
   createBarsView();
 }
@@ -157,12 +172,13 @@ function parsePieData(){
   valuesPie1 = [];
   valuesPie2 = [];
   labelsPie = [];
+  console.log(obj);
   for (i in obj) {
-    if((obj[i].Condicion).localeCompare("Asegurados") != 0){
-      valuesPie1.push(obj[i].Total);
-      labelsPie.push(obj[i].Provincia);
+    if(obj[i].idSexo == 1){
+      valuesPie1.push(obj[i].cantidad);
+      labelsPie.push(obj[i].grupoEdad);
     }else{
-      valuesPie2.push(obj[i].Total);
+      valuesPie2.push(obj[i].cantidad);
     }
   }
   createPieView();
@@ -176,6 +192,19 @@ function parseDonutData(){
     labelsDonut.push(obj[i].Condicion);
   }
   createDonutView();
+}
+function parseLinesData(){
+  var obj = JSON.parse(responseLines);
+  valuesLines1 = [];
+  valuesLines2 = [];
+  for (i in obj) {
+    if(obj[i].idSexo == 1){
+       valuesLines1.push(obj[i].Total);
+    }else{
+       valuesLines2.push(obj[i].Total);
+    }
+  }
+  createLinesView();
 }
 //-----------GRAPHICS-------------------
 cantonNumbers = [1,  2,  3,  4,  5,  6,  7,  8,  9,  10,  11,  12,  13,  14,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,  28,  29,  30,  31,  32,  33,  34,  35,  36,  37,  38,  39,  40,  41,  42,  43,  44,  45,  46,  47,  48,  49,  50,  51,  52,  53,  54,  55,  56,  57,  58,  59,  60,  61,  62,  63,  64,  65,  66,  67,  68,  69,  70,  71,  72,  73,  74,  75,  76,  77,  78,  79,  80,  81]
@@ -542,13 +571,23 @@ function createPieView(){
      'rgb(11, 152, 3)', 
      'rgb(30, 250, 18)', 
      'rgb(249, 243, 19)',
-     'rgb(236, 46, 222)']
+     'rgb(236, 46, 222)',
+     'rgb(255, 21, 39)', 
+     'rgb(44, 134, 223)', 
+     'rgb(254, 98, 22)', 
+     'rgb(11, 152, 3)', 
+     'rgb(30, 250, 18)', 
+     'rgb(249, 243, 19)',
+     'rgb(236, 46, 222)',
+     'rgb(255, 21, 39)', 
+     'rgb(44, 134, 223)', 
+     'rgb(254, 98, 22)']
   ];
   var dataPie = [{
     values: allPieValues[0],
     labels: labelsPie,
     type: 'pie',
-    name: 'Asegurados',
+    name: 'Hombres',
     marker: {
       colors: ultimateColors[0]
     },
@@ -562,25 +601,25 @@ function createPieView(){
     values: allPieValues[1],
     labels: labelsPie,
     type: 'pie',
-    name: 'No Asegurados',
+    name: 'Mujeres',
     marker: {
       colors: ultimateColors[0]
     },
     domain: {
-      row: 0,
-      column: 1
+      row: 1,
+      column: 0
     },
     hoverinfo: 'label+percent+name',
     textinfo: 'percent'
   }]
   var layoutPie = {
-    title: 'Cantidad de asegurados por Año',
-    height: 240,
+    title: 'Gráfico de Pie',
+    height: 500,
     width: 500,
-    grid:{rows: 1, columns: 2},
+    grid:{rows: 2, columns: 1},
     margin: {l: 15,t: 25, b: 15,r: 15}
- };
-  Plotly.newPlot('graph1', dataPie, layoutPie);
+  };
+  Plotly.newPlot('graphContainer3', dataPie, layoutPie);
 }
 //----Donut------
 function createDonutView(){
@@ -601,233 +640,170 @@ function createDonutView(){
 //----Bar-----
 function createBarsView(){
   var trace1 = {
-    x: labelsBars1,
-    y: valuesBars1,
-    name: 'Asegurados',
-    type: 'bar'
-  };
-  var trace2 = {
-    x: labelsBars2,
-    y: valuesBars2,
-    name: 'No Asegurados',
-    type: 'bar'
-  };
-  var dataBars = [trace1, trace2];
-  var layoutBars = {
-      title: 'Provincial: % de asegurados por sexo',
-      height: 240,
-      width: 340,
-      margin: {l: 15,t: 25, b: 15,r: 15}
-  };  
-  Plotly.newPlot('graph4', dataBars,layoutBars);
-}
-
-
-
-
-var xData = [
-  //[2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013],
-  //[2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013],
-  //[2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013],
-  [2009, 2010, 2011, 2012, 2013, 2014]
-];
-
-var yData = [
-  //[74, 82, 80, 74, 73, 72, 74, 70, 70, 66, 66, 69],
-  [34, 35, 32, 31, 31, 28]
-  //[13, 14, 20, 24, 20, 24, 24, 40, 35, 41, 43, 50],
-  //[18, 21, 18, 21, 16, 14, 13, 18, 17, 16, 19, 23]
-];
-
-var colors = ['rgba(67,67,67,1)', 'rgba(115,115,115,1)', 'rgba(49,130,189, 1)',
-  'rgba(189,189,189,1)'
-];
-
-var lineSize = [2, 2, 4, 2];
-
-var labels = ['Television', 'Newspaper', 'Internet', 'Radio'];
-
-var data = [];
-
-for ( var i = 0 ; i < xData.length ; i++ ) {
-  var result = {
-    x: xData[i],
-    y: yData[i],
-    type: 'scatter',
-    mode: 'lines',
-    line: {
-      color: colors[i],
-      width: lineSize[i]
-    }
-  };
-  var result2 = {
-    x: [xData[i][0], xData[i][5]],
-    y: [yData[i][0], yData[i][5]],
-    type: 'scatter',
-    mode: 'markers',
+    x: valuesBars,
+    y: [1,2,3,4,5,6,7,8,9,10],
+    type: 'bar',
+    text: namesBars.map(String),
+    textposition: 'auto',
+    hoverinfo: 'none',
+    orientation: 'h',
     marker: {
-      color: colors[i],
-      size: 6
+      color: 'rgb(158,202,225)',
+      opacity: 0.6,
+      line: {
+        color: 'rgb(8,48,107)',
+        width: 1.5
+      }
     }
   };
-  data.push(result, result2);
+
+  var data = [trace1];
+
+  var layout = {
+    title: 'Gráfico de barras',
+    barmode: 'stack'
+  };
+
+  Plotly.newPlot('graphContainer2', data, layout);
 }
 
-var layout = {
-  showlegend: false,
-  height: 500,
-  width: 500,
-  xaxis: {
-    showline: true,
-    showgrid: false,
-    showticklabels: true,
-    linecolor: 'rgb(204,204,204)',
-    linewidth: 2,
-    autotick: false,
-    ticks: 'outside',
-    tickcolor: 'rgb(204,204,204)',
-    tickwidth: 2,
-    ticklen: 5,
-    tickfont: {
-      family: 'Arial',
-      size: 6,
-      color: 'rgb(82, 82, 82)'
-    }
-  },
-  yaxis: {
-    showgrid: false,
-    zeroline: false,
-    showline: false,
-    showticklabels: false
-  },
-  autosize: false,
-  margin: {
-    autoexpand: false,
-    l: 100,
-    r: 20,
-    t: 100
-  },
-  annotations: [
-    {
-      xref: 'paper',
-      yref: 'paper',
-      x: 0.0,
-      y: 1.05,
-      xanchor: 'left',
-      yanchor: 'bottom',
-      text: 'Grafico de Lineas',
-      font:{
+
+
+function createLinesView(){
+  var xData = [
+    [2009, 2010, 2011, 2012, 2013, 2014],
+    [2009, 2010, 2011, 2012, 2013, 2014]
+  ];
+  var yData = [
+    valuesLines1, //Hombres
+    valuesLines2   //Mujeres
+  ];
+  var colors = ['rgba(52,63,223,1)', 'rgba(223, 52, 132,1)'];
+  var lineSize = [3, 3];
+  var labels = ['Hombres', 'Mujeres'];
+  var data = [];
+  for ( var i = 0 ; i < xData.length ; i++ ) {
+    var result = {
+      x: xData[i],
+      y: yData[i],
+      type: 'scatter',
+      mode: 'lines',
+      line: {
+        color: colors[i],
+        width: lineSize[i]
+      }
+    };
+    var result2 = {
+      x: [xData[i][0], xData[i][5]],
+      y: [yData[i][0], yData[i][5]],
+      type: 'scatter',
+      mode: 'markers',
+      marker: {
+        color: colors[i],
+        size: 6
+      }
+    };
+    data.push(result, result2);
+  }
+
+  var layout = {
+    showlegend: false,
+    height: 500,
+    width: 500,
+    xaxis: {
+      showline: true,
+      showgrid: false,
+      showticklabels: true,
+      linecolor: 'rgb(204,204,204)',
+      linewidth: 2,
+      autotick: false,
+      ticks: 'outside',
+      tickcolor: 'rgb(204,204,204)',
+      tickwidth: 2,
+      ticklen: 5,
+      tickfont: {
         family: 'Arial',
-        size: 30,
-        color: 'rgb(37,37,37)'
-      },
-      showarrow: false
+        size: 14,
+        color: 'rgb(82, 82, 82)'
+      }
     },
-    {
+    yaxis: {
+      showgrid: false,
+      zeroline: false,
+      showline: false,
+      showticklabels: false
+    },
+    autosize: false,
+    margin: {
+      autoexpand: false,
+      l: 100,
+      r: 20,
+      t: 100
+    },
+    annotations: [
+      {
+        xref: 'paper',
+        yref: 'paper',
+        x: 0.0,
+        y: 1.05,
+        xanchor: 'left',
+        yanchor: 'bottom',
+        text: 'Gráfico de Líneas',
+        font:{
+          family: 'Arial',
+          size: 30,
+          color: 'rgb(37,37,37)'
+        },
+        showarrow: false
+      },
+      {
+        xref: 'paper',
+        yref: 'paper',
+        x: 0.5,
+        y: -0.1,
+        xanchor: 'center',
+        yanchor: 'top',
+        text: 'Fuente: Ministerio de Salud de Costa Rica',
+        showarrow: false,
+        font: {
+          family: 'Arial',
+          size: 12,
+          color: 'rgb(150,150,150)'
+        }
+      }
+    ]
+  };
+
+  for( var i = 0 ; i < xData.length ; i++ ) {
+    var result = {
       xref: 'paper',
-      yref: 'paper',
-      x: 0.5,
-      y: -0.1,
-      xanchor: 'center',
-      yanchor: 'top',
-      text: 'Source: Pew Research Center & Storytelling with data',
+      x: 0.05,
+      y: yData[i][0],
+      xanchor: 'right',
+      yanchor: 'middle',
+      text: labels[i] + ' ' + yData[i][0],
       showarrow: false,
       font: {
         family: 'Arial',
-        size: 6,
-        color: 'rgb(150,150,150)'
+        size: 16,
+        color: 'black'
       }
-    }
-  ]
-};
-
-for( var i = 0 ; i < xData.length ; i++ ) {
-  var result = {
-    xref: 'paper',
-    x: 0.05,
-    y: yData[i][0],
-    xanchor: 'right',
-    yanchor: 'middle',
-    text: labels[i] + ' ' + yData[i][0] +'%',
-    showarrow: false,
-    font: {
-      family: 'Arial',
-      size: 16,
-      color: 'black'
-    }
-  };
-  var result2 = {
-    xref: 'paper',
-    x: 0.95,
-    y: yData[i][11],
-    xanchor: 'left',
-    yanchor: 'middle',
-    text: yData[i][5] +'%',
-    font: {
-      family: 'Arial',
-      size: 16,
-      color: 'black'
-    },
-    showarrow: false
-  };
-
-  layout.annotations.push(result, result2);
+    };
+    var result2 = {
+      xref: 'paper',
+      x: 0.95,
+      y: yData[i][5],
+      xanchor: 'left',
+      yanchor: 'middle',
+      text: yData[i][5],
+      font: {
+        family: 'Arial',
+        size: 16,
+        color: 'black'
+      },
+      showarrow: false
+    };
+    layout.annotations.push(result, result2);
+  }
+  Plotly.newPlot('graphContainer1', data, layout);
 }
-
-Plotly.newPlot('graphContainer1', data, layout);
-
-
-
-
-cantonNumbers2 = [1,  2,  3,  4,  5,  6,  7,  8,  9,  10,  11,  12,  13,  14,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,  28,  29,  30,  31,  32,  33,  34,  35,  36,  37,  38,  39,  40,  41,  42,  43,  44,  45,  46,  47,  48,  49,  50,  51,  52,  53,  54,  55,  56,  57,  58,  59,  60,  61,  62,  63,  64,  65,  66,  67,  68,  69,  70,  71,  72,  73,  74,  75,  76,  77,  78,  79,  80,  81]
-var data2 = [{
-    type: "choroplethmapbox",
-    name: "Provincias de Costa Rica",
-    geojson: "http://localhost:8080/cantones.json",
-    locations: ["SAN JOSE", "ESCAZU", "DESAMPARADOS", "PURISCAL", "TARRAZU", "ASERRI", "MORA", "GOICOECHEA", "SANTA ANA", "ALAJUELITA", "VAZQUEZ DE CORONADO", "ACOSTA", "TIBAS", "MORAVIA", "MONTES DE OCA", "TURRUBARES", "DOTA", "CURRIDABAT", "PEREZ ZELEDON", "LEON CORTES",
-
-      "ALAJUELA", "SAN RAMON", "GRECIA", "RIO CUARTO", "SAN MATEO", "ATENAS", "NARANJO", "PALMARES", "POAS", "OROTINA", "SAN CARLOS", "ZARCERO", "VALVERDE VEGA", "UPALA", "LOS CHILES", "GUATUSO",
-
-      "CARTAGO", "PARAISO", "LA UNION", "JIMENEZ", "TURRIALBA", "ALVARADO", "OREAMUNO", "EL GUARCO",
-
-      "HEREDIA", "HEREDIA_", "BARVA", "SANTO DOMINGO", "SANTA BARBARA", "SAN RAFAEL", "SAN ISIDRO", "BELEN", "FLORES", "SAN PABLO", "SARAPIQUI",
-
-      "LIBERIA", "NICOYA", "SANTA CRUZ", "BAGACES", "CARRILLO", "CAÑAS", "ABANGARES", "TILARAN", "NANDAYURE", "LA CRUZ", "HOJANCHA",
-
-      "PUNTARENAS", "PUNTARENAs", "ISLA DEL COCO", "ISLA NUEZ", "ISLA CABO BLANCO", "ISLA CABUYA", "ISLA TORTUGA", "ISLA ALCATRAZ", "ISLAS NEGRITOS", "ISLA NEGRITOS", "ISLA JESUITA", "ISLA CEDROS", "ISLA MUERTOS", "ISLA SAN LUCAS", "ISLA VENADO", "ISLA CABALLO", "ISLA BEJUCO", "ISLA CHIRA", "ESPARZA", "BUENOS AIRES", "MONTES DE ORO", "OSA", "AGUIRRE", "GOLFITO", "COTO BRUS", "PARRITA", "CORREDORES", "GARABITO",
-
-      "LIMON", "POCOCI", "SIQUIRRES", "TALAMANCA", "MATINA", "GUACIMO"],
-    // 1345750
-    z: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-
-        10000, 8500, 9000, 8000, 9800, 8700, 8200, 9400, 8600, 8000, 9300, 8800, 9750, 9200, 8700, 8300,
-
-        5000, 5650, 5800, 6300, 5400, 6700, 5400, 6000,
-
-        4400, 4400, 4150, 5150, 4800, 4700, 4900, 4000, 5000, 4100, 4600,
-
-        5500, 5000, 6200, 6850, 4500, 5800, 4750, 6400, 5900, 7200, 6550,
-
-        7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 6400, 7250, 6000, 7900, 5000, 6100, 5000, 4468, 5500, 7500,
-
-        1500, 2700, 1650, 500, 800, 400],
-
-    zmin: 0, zmax: 10000,
-    hoverinfo: "cantonNumbers2",
-    //colorscale: "Rainbow",
-    //autocolorscale:true,
-    }];
-var layout2 = {mapbox: {style: "dark", center: {lon: -84.09, lat: 9.93}, zoom: 6.5}, 
-                    width: 1000, 
-                    height: 450, 
-                    margin: {l: 0,t: 0, b: 0},
-                    hovermode: 'closest'
-                  };
-//margin = dict(l = 0, r = 0, t = 0, b = 0)
-var config2 = {mapboxAccessToken: "pk.eyJ1Ijoiam9zdWVnZ3NzNzMiLCJhIjoiY2tkMTA5MHNmMGRiMjJ0bW11NGdqNjljMCJ9.aQToRizI-RvaLRg7SopqrQ"};
-Plotly.newPlot('main2', data2, layout2, config2).then(gd=>{
-  gd.on('plotly_click', d => {
-      
-      
-    })
-});
