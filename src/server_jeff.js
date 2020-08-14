@@ -16,7 +16,7 @@ var server = app.listen(8080, function () {
 // config for your database
 var config = {
     user: 'josue',
-    password: 'warriorTX73',
+    password: '#########',
     server: 'MSSQLSERVER01', 
     server: 'localhost', 
     database: 'PF-VIS' 
