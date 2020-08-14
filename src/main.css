@@ -111,36 +111,68 @@ h1{
 #textInfo1{
     margin-left: 5%;
     margin-right: 3%;
+    width: 42%;
 }
 #graphContainer1{
     margin-left: 3%;
     margin-right: 5%;
+    width: 42%;
+    background-color: white;
 }
 #textInfo2{
     margin-left: 3%;
     margin-right: 5%;
+    width: 42%;
 }
 #graphContainer2{
+    width: 42%;
     margin-left: 5%;
     margin-right: 3%;
+}
+#textInfo3{
+    margin-left: 5%;
+    margin-right: 3%;
+    width: 42%;
+}
+#graphContainer3{
+    width: 42%;
+    margin-left: 3%;
+    margin-right: 5%;
 }
 #firstBlock{
     margin-top: 85px;
 }
 .textInfo{
-    width: 42%;
     height: 500px;
-    background-color: cadetblue;
+    background-color: rgb(172, 208, 241);
     float: left;
     margin-bottom: 30px;
 }
 .graphContainer{
-    width: 42%;
     height: 500px;
-    background-color: coral;
     float: left;
     margin-bottom: 30px;
 }
+.graphicName{
+    font-size: 48px;
+    text-align: center;
+    font-weight: bold;
+    margin: 35px 5px 35px 5px;
+}
+.graphicProp{
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    margin: 35px 5px 35px 5px;
+}
+.graphicDesc{
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin: 35px 5px 35px 5px;
+}
+
 #titles button{
     font-size: 24px;
     font-family: sans-serif;
@@ -178,8 +210,3 @@ h1{
       background-color: green;
       border-color: green;
   }
-  #main2{
-      margin-top: 1250px;
-      margin-bottom: 50px;
-  }
-  
