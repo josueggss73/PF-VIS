@@ -139,6 +139,18 @@ h1{
     margin-left: 3%;
     margin-right: 5%;
 }
+#textInfo4{
+    margin-left: 5%;
+    margin-right: 3%;
+    width: 42%;
+    background-color: turquoise;
+}
+#graphContainer4{
+    background-color: aqua;
+    width: 42%;
+    margin-left: 3%;
+    margin-right: 5%;
+}
 #firstBlock{
     margin-top: 85px;
 }
