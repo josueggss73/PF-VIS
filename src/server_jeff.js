@@ -13,20 +13,18 @@ var server = app.listen(8080, function () {
 
 
 // config for your database
-//var config = {
-//    user: 'josue',
-//    password: 'warriorTX73',
-//    //server: 'MSSQLSERVER01', 
-//    server: 'localhost', 
-//    database: 'PC3-VIS' 
-//};
-//var sql = require("mssql");
+var config = {
+    user: 'josue',
+    password: 'warriorTX73',
+    server: 'MSSQLSERVER01', 
+    server: 'localhost', 
+    database: 'PF-VIS' 
+};
+var sql = require("mssql");
 //// connect to your database
-//sql.connect(config, function (err) {
-
-////    if (err) console.log(err);
-
-////});
+sql.connect(config, function (err) {
+    if (err) console.log(err);
+});
 
 app.get('/main.css', function(req, res) {
     res.sendFile(__dirname + "/" + "main.css");

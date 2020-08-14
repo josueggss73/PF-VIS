@@ -5,6 +5,8 @@ var selectedProvinceId = 2;
 var selectedCanton = "SAN CARLOS";
 var selectedCantonId = 30;
 var selectedYear = 2000;
+var selectedAge = 1;
+var selectedTumor = 1;
 //----Responses for every view
 var responseBars = "0";
 var responsePie = "0";
@@ -25,8 +27,10 @@ var labelsDonut = [];
 
 
 //-----Listeners
-//document.getElementById("yearSelection").addEventListener("change",selectYear);
-//document.getElementById("sexSelection").addEventListener("change",selectSex);
+document.getElementById("yearSelection").addEventListener("change",selectYear);
+document.getElementById("sexSelection").addEventListener("change",selectSex);
+document.getElementById("ageSelection").addEventListener("change",selectAge);
+document.getElementById("tumorSelection").addEventListener("change",selectTumor);
 
 function changeProvinceName(province,provinceId, canton, cantonId){
   document.getElementById("cantonName").innerHTML = canton
@@ -43,6 +47,14 @@ function selectYear(){
 }
 function selectSex(){
   selectedSex = document.getElementById("sexSelection").value;
+  makePosts();
+}
+function selectAge(){
+  selectedAge = document.getElementById("ageSelection").value;
+  makePosts();
+}
+function selectTumor(){
+  selectedTumor = document.getElementById("tumorSelection").value;
   makePosts();
 }
 //----Invokers
@@ -173,7 +185,7 @@ var data = [{
     geojson: "http://localhost:8080/cantones.json",
     locations: ["SAN JOSE", "ESCAZU", "DESAMPARADOS", "PURISCAL", "TARRAZU", "ASERRI", "MORA", "GOICOECHEA", "SANTA ANA", "ALAJUELITA", "VAZQUEZ DE CORONADO", "ACOSTA", "TIBAS", "MORAVIA", "MONTES DE OCA", "TURRUBARES", "DOTA", "CURRIDABAT", "PEREZ ZELEDON", "LEON CORTES",
 
-      "ALAJUELA", "SAN RAMON", "GRECIA", "RIO CUARTO", "SAN MATEO", "ATENAS", "NARANJO", "PALMARES", "POAS", "OROTINA", "SAN CARLOS", "ALFARO RUIZ", "VALVERDE VEGA", "UPALA", "LOS CHILES", "GUATUSO",
+      "ALAJUELA", "SAN RAMON", "GRECIA", "RIO CUARTO", "SAN MATEO", "ATENAS", "NARANJO", "PALMARES", "POAS", "OROTINA", "SAN CARLOS", "ZARCERO", "VALVERDE VEGA", "UPALA", "LOS CHILES", "GUATUSO",
 
       "CARTAGO", "PARAISO", "LA UNION", "JIMENEZ", "TURRIALBA", "ALVARADO", "OREAMUNO", "EL GUARCO",
 
@@ -309,8 +321,8 @@ Plotly.newPlot('main', data, layout, config).then(gd=>{
         case "SAN CARLOS":
           changeProvinceName("ALAJUELA",2,pt.location,30);
           break
-        case "ALFARO RUIZ": 
-          changeProvinceName("ALAJUELA",2,pt.location,31);
+        case "ZARCERO": 
+          changeProvinceName("ALAJUELA",2,"ALFARO RUIZ",31);
           break
         case "VALVERDE VEGA":
           changeProvinceName("ALAJUELA",2,pt.location,32);
@@ -323,6 +335,198 @@ Plotly.newPlot('main', data, layout, config).then(gd=>{
           break
         case "GUATUSO":
           changeProvinceName("ALAJUELA",2,pt.location,35);
+          break
+        case "CARTAGO":
+          changeProvinceName("CARTAGO",3,pt.location,36);
+          break
+        case "PARAISO":
+          changeProvinceName("CARTAGO",3,pt.location,37);
+          break
+        case "LA UNION":
+          changeProvinceName("CARTAGO",3,pt.location,38);
+          break
+        case "JIMENEZ":
+          changeProvinceName("CARTAGO",3,pt.location,39);
+          break
+        case "TURRIALBA":
+          changeProvinceName("CARTAGO",3,pt.location,40);
+          break
+        case "ALVARADO":
+          changeProvinceName("CARTAGO",3,pt.location,41);
+          break
+        case "OREAMUNO":
+          changeProvinceName("CARTAGO",3,pt.location,42);
+          break
+        case "EL GUARCO":
+          changeProvinceName("CARTAGO",3,pt.location,43);
+          break
+        case "HEREDIA": 
+          changeProvinceName("HEREDIA",4,pt.location,44);
+          break
+        case "HEREDIA_":
+          changeProvinceName("HEREDIA",4,"HEREDIA",44);
+          break
+        case "BARVA":
+          changeProvinceName("HEREDIA",4,pt.location,45);
+          break
+        case "SANTO DOMINGO":
+          changeProvinceName("HEREDIA",4,pt.location,46);
+          break
+        case "SANTA BARBARA": 
+          changeProvinceName("HEREDIA",4,pt.location,47);
+          break
+        case "SAN RAFAEL": 
+          changeProvinceName("HEREDIA",4,pt.location,48);
+          break
+        case "SAN ISIDRO":
+          changeProvinceName("HEREDIA",4,pt.location,49);
+          break
+        case "BELEN": 
+          changeProvinceName("HEREDIA",4,pt.location,50);
+          break
+        case "FLORES": 
+          changeProvinceName("HEREDIA",4,pt.location,51);
+          break
+        case "SAN PABLO": 
+          changeProvinceName("HEREDIA",4,pt.location,52);
+          break
+        case "SARAPIQUI":
+          changeProvinceName("HEREDIA",4,pt.location,53);
+          break
+        case "LIBERIA": 
+          changeProvinceName("GUANACASTE",5,pt.location,54);
+          break
+        case "NICOYA":
+          changeProvinceName("GUANACASTE",5,pt.location,55);
+          break
+        case "SANTA CRUZ":
+          changeProvinceName("GUANACASTE",5,pt.location,56);
+          break
+        case "BAGACES":
+          changeProvinceName("GUANACASTE",5,pt.location,57);
+          break
+        case "CARRILLO": 
+          changeProvinceName("GUANACASTE",5,pt.location,58);
+          break
+        case "CAÑAS":
+          changeProvinceName("GUANACASTE",5,pt.location,59);
+          break
+        case "ABANGARES":
+          changeProvinceName("GUANACASTE",5,pt.location,60);
+          break
+        case "TILARAN":
+          changeProvinceName("GUANACASTE",5,pt.location,61);
+          break
+        case "NANDAYURE":
+          changeProvinceName("GUANACASTE",5,pt.location,62);
+          break
+        case "LA CRUZ":
+          changeProvinceName("GUANACASTE",5,pt.location,63);
+          break
+        case "HOJANCHA":
+          changeProvinceName("GUANACASTE",5,pt.location,64);
+          break
+        case "PUNTARENAS":
+          changeProvinceName("PUNTARENAS",6,pt.location,65);
+          break
+        case "PUNTARENAs": 
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA DEL COCO":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA NUEZ":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA CABO BLANCO":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA CABUYA":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA TORTUGA": 
+        changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA ALCATRAZ": 
+        changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLAS NEGRITOS":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA NEGRITOS":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA JESUITA":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA CEDROS":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA MUERTOS":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA SAN LUCAS":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA VENADO":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA CABALLO": 
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA BEJUCO":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ISLA CHIRA":
+          changeProvinceName("PUNTARENAS",6,"PUNTARENAS",65);
+          break
+        case "ESPARZA":
+          changeProvinceName("PUNTARENAS",6,pt.location,66);
+          break
+        case "BUENOS AIRES":
+          changeProvinceName("PUNTARENAS",6,pt.location,67);
+          break
+        case "MONTES DE ORO":
+          changeProvinceName("PUNTARENAS",6,pt.location,68);
+          break
+        case "OSA":
+          changeProvinceName("PUNTARENAS",6,pt.location,69);
+          break
+        case "AGUIRRE":
+          changeProvinceName("PUNTARENAS",6,pt.location,70);
+          break
+        case "GOLFITO": 
+          changeProvinceName("PUNTARENAS",6,pt.location,71);
+          break
+        case "COTO BRUS":
+          changeProvinceName("PUNTARENAS",6,pt.location,72);
+          break
+        case "PARRITA":
+          changeProvinceName("PUNTARENAS",6,pt.location,73);
+          break
+        case "CORREDORES":
+          changeProvinceName("PUNTARENAS",6,pt.location,74);
+          break
+        case "GARABITO":
+          changeProvinceName("PUNTARENAS",6,pt.location,75);
+          break
+        case "LIMON":
+          changeProvinceName("LIMON",7,pt.location,76);
+          break
+        case "POCOCI":
+          changeProvinceName("LIMON",7,pt.location,77);
+          break
+        case "SIQUIRRES":
+          changeProvinceName("LIMON",7,pt.location,78);
+          break
+        case "TALAMANCA":
+          changeProvinceName("LIMON",7,pt.location,79);
+          break
+        case "MATINA":
+          changeProvinceName("LIMON",7,pt.location,80);
+          break
+        case "GUACIMO":
+          changeProvinceName("LIMON",7,pt.location,81);
           break
       }
     })
@@ -417,3 +621,213 @@ function createBarsView(){
   };  
   Plotly.newPlot('graph4', dataBars,layoutBars);
 }
+
+
+
+
+var xData = [
+  //[2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013],
+  //[2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013],
+  //[2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013],
+  [2009, 2010, 2011, 2012, 2013, 2014]
+];
+
+var yData = [
+  //[74, 82, 80, 74, 73, 72, 74, 70, 70, 66, 66, 69],
+  [34, 35, 32, 31, 31, 28]
+  //[13, 14, 20, 24, 20, 24, 24, 40, 35, 41, 43, 50],
+  //[18, 21, 18, 21, 16, 14, 13, 18, 17, 16, 19, 23]
+];
+
+var colors = ['rgba(67,67,67,1)', 'rgba(115,115,115,1)', 'rgba(49,130,189, 1)',
+  'rgba(189,189,189,1)'
+];
+
+var lineSize = [2, 2, 4, 2];
+
+var labels = ['Television', 'Newspaper', 'Internet', 'Radio'];
+
+var data = [];
+
+for ( var i = 0 ; i < xData.length ; i++ ) {
+  var result = {
+    x: xData[i],
+    y: yData[i],
+    type: 'scatter',
+    mode: 'lines',
+    line: {
+      color: colors[i],
+      width: lineSize[i]
+    }
+  };
+  var result2 = {
+    x: [xData[i][0], xData[i][5]],
+    y: [yData[i][0], yData[i][5]],
+    type: 'scatter',
+    mode: 'markers',
+    marker: {
+      color: colors[i],
+      size: 6
+    }
+  };
+  data.push(result, result2);
+}
+
+var layout = {
+  showlegend: false,
+  height: 500,
+  width: 500,
+  xaxis: {
+    showline: true,
+    showgrid: false,
+    showticklabels: true,
+    linecolor: 'rgb(204,204,204)',
+    linewidth: 2,
+    autotick: false,
+    ticks: 'outside',
+    tickcolor: 'rgb(204,204,204)',
+    tickwidth: 2,
+    ticklen: 5,
+    tickfont: {
+      family: 'Arial',
+      size: 6,
+      color: 'rgb(82, 82, 82)'
+    }
+  },
+  yaxis: {
+    showgrid: false,
+    zeroline: false,
+    showline: false,
+    showticklabels: false
+  },
+  autosize: false,
+  margin: {
+    autoexpand: false,
+    l: 100,
+    r: 20,
+    t: 100
+  },
+  annotations: [
+    {
+      xref: 'paper',
+      yref: 'paper',
+      x: 0.0,
+      y: 1.05,
+      xanchor: 'left',
+      yanchor: 'bottom',
+      text: 'Grafico de Lineas',
+      font:{
+        family: 'Arial',
+        size: 30,
+        color: 'rgb(37,37,37)'
+      },
+      showarrow: false
+    },
+    {
+      xref: 'paper',
+      yref: 'paper',
+      x: 0.5,
+      y: -0.1,
+      xanchor: 'center',
+      yanchor: 'top',
+      text: 'Source: Pew Research Center & Storytelling with data',
+      showarrow: false,
+      font: {
+        family: 'Arial',
+        size: 6,
+        color: 'rgb(150,150,150)'
+      }
+    }
+  ]
+};
+
+for( var i = 0 ; i < xData.length ; i++ ) {
+  var result = {
+    xref: 'paper',
+    x: 0.05,
+    y: yData[i][0],
+    xanchor: 'right',
+    yanchor: 'middle',
+    text: labels[i] + ' ' + yData[i][0] +'%',
+    showarrow: false,
+    font: {
+      family: 'Arial',
+      size: 16,
+      color: 'black'
+    }
+  };
+  var result2 = {
+    xref: 'paper',
+    x: 0.95,
+    y: yData[i][11],
+    xanchor: 'left',
+    yanchor: 'middle',
+    text: yData[i][5] +'%',
+    font: {
+      family: 'Arial',
+      size: 16,
+      color: 'black'
+    },
+    showarrow: false
+  };
+
+  layout.annotations.push(result, result2);
+}
+
+Plotly.newPlot('graphContainer1', data, layout);
+
+
+
+
+cantonNumbers2 = [1,  2,  3,  4,  5,  6,  7,  8,  9,  10,  11,  12,  13,  14,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,  28,  29,  30,  31,  32,  33,  34,  35,  36,  37,  38,  39,  40,  41,  42,  43,  44,  45,  46,  47,  48,  49,  50,  51,  52,  53,  54,  55,  56,  57,  58,  59,  60,  61,  62,  63,  64,  65,  66,  67,  68,  69,  70,  71,  72,  73,  74,  75,  76,  77,  78,  79,  80,  81]
+var data2 = [{
+    type: "choroplethmapbox",
+    name: "Provincias de Costa Rica",
+    geojson: "http://localhost:8080/cantones.json",
+    locations: ["SAN JOSE", "ESCAZU", "DESAMPARADOS", "PURISCAL", "TARRAZU", "ASERRI", "MORA", "GOICOECHEA", "SANTA ANA", "ALAJUELITA", "VAZQUEZ DE CORONADO", "ACOSTA", "TIBAS", "MORAVIA", "MONTES DE OCA", "TURRUBARES", "DOTA", "CURRIDABAT", "PEREZ ZELEDON", "LEON CORTES",
+
+      "ALAJUELA", "SAN RAMON", "GRECIA", "RIO CUARTO", "SAN MATEO", "ATENAS", "NARANJO", "PALMARES", "POAS", "OROTINA", "SAN CARLOS", "ZARCERO", "VALVERDE VEGA", "UPALA", "LOS CHILES", "GUATUSO",
+
+      "CARTAGO", "PARAISO", "LA UNION", "JIMENEZ", "TURRIALBA", "ALVARADO", "OREAMUNO", "EL GUARCO",
+
+      "HEREDIA", "HEREDIA_", "BARVA", "SANTO DOMINGO", "SANTA BARBARA", "SAN RAFAEL", "SAN ISIDRO", "BELEN", "FLORES", "SAN PABLO", "SARAPIQUI",
+
+      "LIBERIA", "NICOYA", "SANTA CRUZ", "BAGACES", "CARRILLO", "CAÑAS", "ABANGARES", "TILARAN", "NANDAYURE", "LA CRUZ", "HOJANCHA",
+
+      "PUNTARENAS", "PUNTARENAs", "ISLA DEL COCO", "ISLA NUEZ", "ISLA CABO BLANCO", "ISLA CABUYA", "ISLA TORTUGA", "ISLA ALCATRAZ", "ISLAS NEGRITOS", "ISLA NEGRITOS", "ISLA JESUITA", "ISLA CEDROS", "ISLA MUERTOS", "ISLA SAN LUCAS", "ISLA VENADO", "ISLA CABALLO", "ISLA BEJUCO", "ISLA CHIRA", "ESPARZA", "BUENOS AIRES", "MONTES DE ORO", "OSA", "AGUIRRE", "GOLFITO", "COTO BRUS", "PARRITA", "CORREDORES", "GARABITO",
+
+      "LIMON", "POCOCI", "SIQUIRRES", "TALAMANCA", "MATINA", "GUACIMO"],
+    // 1345750
+    z: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+
+        10000, 8500, 9000, 8000, 9800, 8700, 8200, 9400, 8600, 8000, 9300, 8800, 9750, 9200, 8700, 8300,
+
+        5000, 5650, 5800, 6300, 5400, 6700, 5400, 6000,
+
+        4400, 4400, 4150, 5150, 4800, 4700, 4900, 4000, 5000, 4100, 4600,
+
+        5500, 5000, 6200, 6850, 4500, 5800, 4750, 6400, 5900, 7200, 6550,
+
+        7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 7000, 6400, 7250, 6000, 7900, 5000, 6100, 5000, 4468, 5500, 7500,
+
+        1500, 2700, 1650, 500, 800, 400],
+
+    zmin: 0, zmax: 10000,
+    hoverinfo: "cantonNumbers2",
+    //colorscale: "Rainbow",
+    //autocolorscale:true,
+    }];
+var layout2 = {mapbox: {style: "dark", center: {lon: -84.09, lat: 9.93}, zoom: 6.5}, 
+                    width: 1000, 
+                    height: 450, 
+                    margin: {l: 0,t: 0, b: 0},
+                    hovermode: 'closest'
+                  };
+//margin = dict(l = 0, r = 0, t = 0, b = 0)
+var config2 = {mapboxAccessToken: "pk.eyJ1Ijoiam9zdWVnZ3NzNzMiLCJhIjoiY2tkMTA5MHNmMGRiMjJ0bW11NGdqNjljMCJ9.aQToRizI-RvaLRg7SopqrQ"};
+Plotly.newPlot('main2', data2, layout2, config2).then(gd=>{
+  gd.on('plotly_click', d => {
+      
+      
+    })
+});

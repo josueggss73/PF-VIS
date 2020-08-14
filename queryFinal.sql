@@ -1,6 +1,6 @@
 select * from Provincias
 
-SELECT * FROM Cantones where idProvincia = 1
+SELECT * FROM Cantones where idProvincia = 6
 
 SELECT * FROM Sexos
 

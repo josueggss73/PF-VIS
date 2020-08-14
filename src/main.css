@@ -105,8 +105,41 @@ h1{
     margin-left: 10px;
     box-sizing: border-box;
 }
-#tumorSelection{
-    
+.graphAndText{
+   
+}
+#textInfo1{
+    margin-left: 5%;
+    margin-right: 3%;
+}
+#graphContainer1{
+    margin-left: 3%;
+    margin-right: 5%;
+}
+#textInfo2{
+    margin-left: 3%;
+    margin-right: 5%;
+}
+#graphContainer2{
+    margin-left: 5%;
+    margin-right: 3%;
+}
+#firstBlock{
+    margin-top: 85px;
+}
+.textInfo{
+    width: 42%;
+    height: 500px;
+    background-color: cadetblue;
+    float: left;
+    margin-bottom: 30px;
+}
+.graphContainer{
+    width: 42%;
+    height: 500px;
+    background-color: coral;
+    float: left;
+    margin-bottom: 30px;
 }
 #titles button{
     font-size: 24px;
@@ -144,5 +177,9 @@ h1{
       color: #FFF;
       background-color: green;
       border-color: green;
+  }
+  #main2{
+      margin-top: 1250px;
+      margin-bottom: 50px;
   }
   
