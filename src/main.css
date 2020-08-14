@@ -159,6 +159,10 @@ h1{
     background-color: rgb(172, 208, 241);
     float: left;
     margin-bottom: 30px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: blue;
+    box-sizing: border-box;
 }
 .graphContainer{
     height: 500px;

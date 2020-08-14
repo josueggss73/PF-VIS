@@ -32,3 +32,8 @@ select G.grupoEdad, idSexo, TG.cantidad from
 GruposEdad G inner join Tumores_X_GruposEdad TG on G.idGrupoEdad = TG.idGrupoEdad
 where TG.year = 2009 AND TG.idTumor = 38
 
+
+
+
+
+
