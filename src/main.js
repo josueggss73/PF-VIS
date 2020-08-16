@@ -242,7 +242,7 @@ var data = [{
 
     zmin: 0, zmax: 10000,
     colorscale: "Rainbow",
-    hoverinfo: "cantonNumbers",
+    hoverinfo: "location",
     //autocolorscale:true,
     }];
 var layout = {mapbox: {style: "dark", center: {lon: -84.09, lat: 9.93}, zoom: 6.5}, 
