@@ -9,7 +9,7 @@ var selectedAge = 1;
 var selectedTumor = 1;
 //----Responses for every view
 var responseLines = "0";
-
+var responsePie = "0"
 var responseBars = "0"
 
 //----Data for every view
@@ -59,13 +59,11 @@ function selectTumor(){
 function makeGets(){
   httpGetBars();
   httpGetPie();
-  //httpGetDonut();
   httpGetLines();
 }
 function makePosts(){
   httpPostBars();
   httpPostPie();
-  //httpPostDonut();
   httpPostLines();
 }
 
@@ -527,6 +525,9 @@ Plotly.newPlot('main', data, layout, config).then(gd=>{
         case "GOLFITO": 
           changeProvinceName("PUNTARENAS",6,pt.location,71);
           break
+        case "PARQUE NACIONAL CORCOVADO":
+          changeProvinceName("PUNTARENAS",6,"GOLFITO",71);
+          break
         case "COTO BRUS":
           changeProvinceName("PUNTARENAS",6,pt.location,72);
           break
@@ -666,8 +667,6 @@ function createBarsView(){
 
   Plotly.newPlot('graphContainer2', data, layout);
 }
-
-
 
 function createLinesView(){
   var xData = [
